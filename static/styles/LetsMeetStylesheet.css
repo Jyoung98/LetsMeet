@@ -1,0 +1,250 @@
+html {
+    min-height: 100%;
+    background-size: cover;
+    background: linear-gradient(to bottom, rgb(250, 228, 218), rgb(220, 178, 255));
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+header {
+    background-image: 
+		linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
+		url(./indexPic.png);
+	height: 350px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	padding-top: 80px;        
+}
+
+#topNav {
+    text-decoration: none;
+    position: fixed;
+    top: 0px; 
+    width: 850px;
+    display: block;
+    text-align: center;
+    background-color: #232422;
+}
+
+#topNav li {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding: 0px 10px 0 15px;
+    font-size: 180%;
+    margin-top: 5px;
+}
+
+#topNav a {
+    text-decoration: none;
+    color: antiquewhite;
+    
+}
+
+table {
+    color: antiquewhite;
+}
+
+
+/* Formatting for the website's name displayed in the header portion */
+h1 {
+    display: inline-block;
+    font-family: LemonBrush;
+    color: rgb(22, 22, 22);
+    font-size: 650%;
+    text-shadow: 4px 4px 9px #ffa442 ;
+    margin-top: 0%;
+}
+
+/* Formatting action when the mouse hovers over the top navigation menu items */
+#topNav a:hover {
+    color: rgb(247, 78, 0);
+}
+
+/* formatting for the currently selected page */
+#currPage {
+    color: violet;
+    border-bottom: 5px solid rgb(247, 78, 0);
+    border-radius: 5px;
+    background: url(./redFeather.png) no-repeat left center;
+    background-position: -2px;
+}
+
+h2, h3 {
+    font-size: 26px;
+    background-color: #92b1ff;
+    border-radius: 5px;
+    text-align: center;
+    color: #362935;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Format for the user input */
+form {
+    background-color: #f8f8f8;
+	background-color: white;
+	border: solid 2px;
+	border-radius: 10px;
+	padding: 20px;
+	max-width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+    background-color: rgb(237, 237, 237);
+}
+
+/* formatting for the labels for the form input boxes */
+#theLabel {
+	float: left;
+	width: 5em;
+	text-align: right;
+}
+
+#inputForm {
+	margin-left: 4em;
+	margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+}
+
+#newEventLabel, #dateLabel {
+    float: left;
+    width: 7em;    
+    text-align: right;
+}
+
+#newEventInput, #eventDate {
+    margin-left: 40px;
+    margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+	margin-bottom: 20px;
+}
+
+#errors {
+    color: red;
+}
+
+/* footer formatting */
+footer {
+    background-color: #232422;
+    text-align: center;
+    font-size: 150%;
+    color: white;    
+}
+
+/*  
+    Custom font retrieved from 1001freefonts.com under permission of
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemonbrush-font.html
+    
+    Custom font retrieved from 1001freefonts.com under permission of 
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemon-brush.font
+*/
+@font-face {
+    font-family: LemonBrush;
+    src: url(./LemonBrushFont.otf);
+}
+
+table, th, td {
+    border-radius: 10px;    
+    border-collapse: collapse;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+table {
+    border-collapse:separate;
+}
+caption {
+    color: #362935;
+    /* background-color: #83f29f; */
+    background-color: #92b1ff;
+    font-size: 30px;
+    border: 5px solid #92b1ff;    
+    border-radius: 10px;
+    margin-top: 30px;
+}   
+
+td {
+    padding: 5px;
+    height: 10ex;
+    background-color: #92b1ff;
+    color: #362935;
+    text-align: center;
+    font-family: "Monaco", monospace;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+th{
+    color: #362935;
+    font-size: 22px;    
+}
+
+/* nav {
+  display: block;
+  color: #232422;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #232422;    
+} */
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#eventName {
+    text-align: left;    
+}
+
+/* Button CSS */
+input[type = submit] {
+  background-color: rgb(146, 177, 255);
+  color: white;
+  padding: 8px 8px 8px 8px;
+  border: 2px solid #92b1ff;
+  margin-left:12px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+} 
+
+input[type = submit]#submitButton:hover {
+  background-color: white; /* Green */
+  color: #4f464d;
+  border: 2px solid #07db86;
+}
+
+#next {
+    background-color: #ba3bf5;
+}
+#prev{
+    background-color: #ff03c4;
+}
+
+#addUserButton, #eventPage {
+    color: black;
+    text-decoration: underline;
+    font-size: larger;
+}
+
+#addUserButton:hover, #addRating:hover, #eventPage:hover {
+    color: white;
+}
+
+#mainCalendar {
+    width: 850px;
+}

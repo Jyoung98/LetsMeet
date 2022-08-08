@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- update 2022 -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LetsMeet</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- top menu navigation section -->
+            <nav id="topNav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
+                    <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li id="currPage"><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h3>Welcome {{user}} to the LetsMeet Site!</h3>
+        <div class="users">
+            <h3>Users</h3>
+        <br>
+                <table>
+                    <tr>
+                        <th>User</th>
+                        <!-- <th>Rating</th> -->
+                    </tr>
+                    {% for people in users %}
+                    <tr>
+                        <td style="display:inline-block;">{{people.username}}</td>
+                        <!-- {% if rating %} -->
+                            <td>4</td>
+                        <!-- {% else %} -->
+                        <!-- <td>No ratings :(</td> -->
+                        {% endif %}
+                    </tr>
+                        <!-- <br> -->
+                    {% endfor %}
+
+                </table>
+            <br>
+
+            <p>
+                Please enter the username from the following list above to add them to your friends list.
+                Enter only one username into the text box.
+            </p>
+
+            <br>
+        </div>
+        <form action="{% if friends %}{{ friends.id }}{% else %}new{% endif %}" method="post">
+            <span id="newEventLabel">
+                {{ form.friendUsername.label }}
+            </span>
+            <span id="newEventInput">
+                {{ form.friendUsername }}
+            </span>
+            {{form.add}}
+
+            <br>
+
+            {% if form.friendUsername.errors %}
+                <span id="errors">
+                    {% for error in form.friendUsername.errors %}
+                    {{ error }}
+                    <br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+
+        </form>
+
+    </body>
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+                <!-- update 2022 -->
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- top menu navigation section -->
+            <nav id="topNav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li id="currPage"><a href="{{ url_for('get_events') }}"> My Events</a></li>
+                    <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>Welcome {{user}} to the LetsMeet App!</h2>
+
+        <h3>Event details</h3>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Date</th>
+                <th>Picture</th>
+            </tr>
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.text }}</td>
+                <td>{{ event.date }}</td>
+                <td><a href="{{ url_for('get_image', id=event.id) }}"> {{ "View Image" }}</a></td>
+            </tr>
+        </table>
+
+        {% if all_RSVPs %}
+            <h3>RSVP'd users:</h3>
+            <table>
+                <tr>
+                    {% for rsvp in all_RSVPs %}
+                        <td>{{ rsvp.user_username }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% endif %}
+        
+        {% if event.comments %}
+        {% if event.comments|length > 0 %}
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in event.comments %}
+            <li>{{ comment.content }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endif %}
+        <form action="{{ url_for('new_comment', event_id=event.id) }}" method="post">
+            <div class="formwrapper">
+                <h2 class="title">Add a comment</h2>
+                <div class="form-field">
+                    {{ form.comment.label }} <br/> {{ form.comment }}
+                </div>
+                {{ form.submit }}
+            </div>
+        </form>
+
+        {% if event.user_id == user_id %}
+            <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
+            <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
+        {% else %}
+            {% if this_RSVP is none %}
+                <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
+            {% else %}
+                <a href="{{ url_for('remove_RSVP_event', event_id=event.id, RSVP_id=this_RSVP.id) }}">Remove RSVP for this Event</a>
+            {% endif %}
+        {% endif %}
+
+
+    </body>
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+    </html>
